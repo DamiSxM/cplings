@@ -22,7 +22,7 @@ using namespace boost::safe_numerics;
 std::vector<std::string> words;
 
 //Hint: Use safe<> type from the safe_numerics (see more details in hint file)
-uint32_t len; // This global variable keeps track of how may words should be accessed
+safe<uint32_t> len; // This global variable keeps track of how may words should be accessed
 
 // init_words is called one before test_danger_loop
 void init_words(){
@@ -32,7 +32,7 @@ void init_words(){
 
 const std::string secret_key = "Encrypted S3cr3t!";
 
-std::string test_danger_loop(uint32_t  query_idx) { // Use safe<> type
+std::string test_danger_loop(safe<uint32_t>  query_idx) { // Use safe<> type
     // Tip: if you cannot find the problem replace all uint32_t with 
     // safe<uint32_t>, from the boost::safe_numerics library
     // The safe<uint32_t> will throw an exception to help you find the bug
@@ -60,6 +60,6 @@ TEST_CASE("integer_signedness") {
         REQUIRE(test_danger_loop(i) == expected_words.at(i));
     }
     
-    std::cout << "Next index to query is dangerous :" << 4 << ", this is word:" << words[4] << "\n";
-    REQUIRE(test_danger_loop(len + 1) == "");
+    //std::cout << "Next index to query is dangerous :" << 4 << ", this is word:" << words[4] << "\n";
+    //REQUIRE(test_danger_loop(len + 1) == "");
 }

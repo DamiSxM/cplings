@@ -5,13 +5,13 @@
 set(FUNCTIONS_EXERCISES_PATH ".")
 set(UNIT_TESTING_LIBRARY Catch2)
 set(EXERCISES
-    templates7
-    templates6
-    templates5
-    templates4
-    templates3
-    templates2
-    templates1
+templates1
+templates2
+templates3
+templates4
+templates5
+templates6
+templates7
 )
 
 foreach(_exercise ${EXERCISES})

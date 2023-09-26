@@ -24,7 +24,7 @@ class Bird : public Animal{
 public:
     Bird() { // Bird constructor
         // Fix:  Please redefine here the class variables inherited from the Animal class
-        number_legs = ;
+        this->number_legs = 2;
     }
     int get_number_legs() {
         return this->number_legs;
@@ -35,9 +35,8 @@ class Cat : public Animal {
 public:
     Cat() {  // Cat constructor
         // TODO: Delete next 2 variables. Please define the class variables inherited from the Animal class
-        number_legs = 4;
-        has_fur = true;
     }
+    int number_legs = 4;
     bool has_fur = true;
     int get_number_legs() {
         return this->number_legs;

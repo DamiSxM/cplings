@@ -74,9 +74,14 @@ public:
         Song::operator delete[](song_ar);
     }
     void set_song(std::string name, const unsigned short  index){
+        if (index < 0 )
+        {
+            return;
+        }
+        
         song_ar[index] = std::move(Song(std::move(name)));
     }
-    std::string get_song_name(const unsigned char index) const{
+    std::string get_song_name(const unsigned int index) const{
         return song_ar[index].name_;
     }
 };

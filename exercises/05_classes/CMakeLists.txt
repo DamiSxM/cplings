@@ -4,10 +4,10 @@
 set(FUNCTIONS_EXERCISES_PATH ".")
 set(UNIT_TESTING_LIBRARY Catch2)
 set(EXERCISES
-    classes4
-    classes3
-    classes2
-    classes1
+classes1
+classes2
+classes3
+classes4
 )
 
 foreach(_exercise ${EXERCISES})

@@ -34,7 +34,6 @@ struct is_string<std::string> : true_type {};
 
 // Please follow the same pattern for checking if type is vector and pointers
 
-
 bool test_templates6_0() {
     bool is_string_result = is_string<std::string>::value;
     return is_string_result;
@@ -44,6 +43,13 @@ bool test_templates6_1() {
     return is_string_result;
 }
 
+
+template<typename T> // Value is false if is not specializing string
+struct is_vector : false_type {};
+
+template<typename T> // // Value is true if specializing string
+struct is_vector<std::vector<T>> : true_type {};
+
 bool test_templates6_2() {
     bool is_vector_result = is_vector<std::vector<int>>::value;
     return is_vector_result;
@@ -52,6 +58,12 @@ bool test_templates6_3() {
     bool is_vector_result = is_vector<char>::value;
     return is_vector_result;
 }
+
+template<typename T> // Value is false if is not specializing string
+struct is_pointer : false_type {};
+
+template<typename T> // // Value is true if specializing string
+struct is_pointer<T*> : true_type {};
 
 bool test_templates6_4() {
     bool is_pointer_result = is_pointer<double*>::value;

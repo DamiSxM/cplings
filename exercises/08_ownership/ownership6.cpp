@@ -51,10 +51,13 @@ const int fill_vec2(std::shared_ptr<std::vector<MyInteger>> vec_ptr) {
     return total_past_owners;
 }
 
-const int fill_vec1(std::shared_ptr<std::vector<MyInteger>> vec_ptr) {
+const int fill_vec1(std::shared_ptr<std::vector<MyInteger>> &vec_ptr) {
     // Create an additional owner here : construct another shared data pointer 
-    std::shared_ptr<std::vector<MyInteger>> vec(vec_ptr);  //TODO: Delete the Datatype of vec and argument
-    vec->push_back(22); // Here push_back is used inducing an unecessary copy and deletion
+    std::weak_ptr<std::vector<MyInteger>> vec = vec_ptr;  //TODO: Delete the Datatype of vec and argument
+
+    // auto toto = vec.lock();
+
+    vec.lock()->push_back(22); // Here push_back is used inducing an unecessary copy and deletion
     std::cout << "vec has length " << vec_ptr->size() << ", number of owners should be 3:" <<
         vec_ptr.use_count() << " in fill_vec1 (notice useless copy and deletion for 22)\n";
 

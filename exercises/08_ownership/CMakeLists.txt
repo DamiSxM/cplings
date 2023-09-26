@@ -5,12 +5,12 @@
 set(FUNCTIONS_EXERCISES_PATH ".")
 set(UNIT_TESTING_LIBRARY Catch2)
 set(EXERCISES
-    ownership6
-    ownership5
-    ownership4
-    ownership3
-    ownership2
-    ownership1
+ownership1
+ownership2
+ownership3
+ownership4
+ownership5
+ownership6
 )
 
 foreach(_exercise ${EXERCISES})

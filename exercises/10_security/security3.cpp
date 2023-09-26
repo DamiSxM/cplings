@@ -20,9 +20,17 @@ class MediaPlayer {
 public:
     MediaPlayer() {} 
     void set_song(std::string name, int index){
-        song_ar[index] = Song(name);
+        if (index < max_num_songs)
+        {
+            song_ar[index] = Song(name);
+        }
     }
     std::string get_song_name(int index) const{
+        if (index >= max_num_songs)
+        {
+            return "";
+        }
+        
         return song_ar[index].name_;
     }
 };
@@ -36,7 +44,7 @@ TEST_CASE("test_security3_0") {
     p.set_song("When the circus comes to town", 1);
     p.set_song("We are in an orchestra", 2);
     p.set_song("Hotel California", 3);
-    p.add_song("The pirates song", 4);
+    p.set_song("The pirates song", 4);
     REQUIRE(p.get_song_name(0) == "Old MacDonald had a farm");
 }
 

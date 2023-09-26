@@ -16,10 +16,11 @@
 // Use two generic types to accept both deque and vector.
 // Use the keyword auto for the generic T returned by the function max
 
-int max(const std::vector<int>& vec) {
+template<typename T>
+auto max(const T& vec) {
     assert(("vec should not be empty", !vec.empty())); 
 
-    int max_val = vec[0];
+    auto max_val = vec[0];
     for (const auto& v : vec) {
         if (v > max_val) {
             max_val = v;

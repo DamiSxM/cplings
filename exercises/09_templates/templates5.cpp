@@ -14,15 +14,15 @@
 
 
 
-template<?, ?, ?>  // Fix: Fix me
+template<typename T, T VALUE, size_t MAX>  // Fix: Fix me
 class Repeater {
 private:
-    std::vector<?> v;
+    std::vector<T> v;
 public:
     Repeater() {
-        for (size_t i = 0; i < ?; i++)
+        for (size_t i = 0; i < MAX; i++)
         {
-            v.push_back(?);
+            v.push_back(VALUE);
         }
     };
     const auto get() const { 

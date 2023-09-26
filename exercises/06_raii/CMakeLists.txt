@@ -5,8 +5,8 @@
 set(FUNCTIONS_EXERCISES_PATH ".")
 set(UNIT_TESTING_LIBRARY Catch2)
 set(EXERCISES
-    raii2
-    raii1
+raii1
+raii2
 )
 
 foreach(_exercise ${EXERCISES})

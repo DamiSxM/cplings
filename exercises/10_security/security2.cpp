@@ -44,12 +44,12 @@ const std::string convert_title_to_lower_case(std::shared_ptr<MediaPlayer> p, in
     return songname;
 }
 
-void make_upper_0_lower_1(MediaPlayer &p){
-    auto shared0 = std::shared_ptr<MediaPlayer>(&p);
+void make_upper_0_lower_1(std::shared_ptr<MediaPlayer> shared){
+    auto shared0 = std::shared_ptr<MediaPlayer>(shared);
     std::string s0_upper = convert_title_to_upper_case(shared0, 0);
     std::cout << s0_upper << "\n";
 
-    auto shared1 = std::shared_ptr<MediaPlayer>(&p);
+    auto shared1 = std::shared_ptr<MediaPlayer>(shared);
     std::string s1_lower = convert_title_to_lower_case(shared1, 1);
     std::cout << s1_lower << "\n";
 }
@@ -58,8 +58,9 @@ void make_upper_0_lower_1(MediaPlayer &p){
 
 TEST_CASE("test_security2_0")
 {
-    MediaPlayer p;
-    p.set_song("Old MacDonald had a farm", 0);
-    p.set_song("When the circus comes to town", 1);
+    //MediaPlayer p;
+    std::shared_ptr<MediaPlayer> p = std::make_shared<MediaPlayer>();
+    p->set_song("Old MacDonald had a farm", 0);
+    p->set_song("When the circus comes to town", 1);
     make_upper_0_lower_1(p);
 }

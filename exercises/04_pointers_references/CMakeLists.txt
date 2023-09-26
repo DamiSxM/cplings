@@ -5,8 +5,8 @@
 set(FUNCTIONS_EXERCISES_PATH ".")
 set(UNIT_TESTING_LIBRARY Catch2)
 set(EXERCISES
+pointers_references1
     pointers_references2
-    pointers_references1
 )
 
 foreach(_exercise ${EXERCISES})

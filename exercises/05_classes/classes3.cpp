@@ -36,7 +36,7 @@ public:
 
 class Circle : public Shape {
 public:
-    Circle(const Point& centre = point_zero) { } // Fix: add a Call to parent constructor
+    Circle(const Point& centre = point_zero) : Shape(centre) { } // Fix: add a Call to parent constructor
 
     Point center() const {
         return center_;

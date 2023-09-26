@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <cstring>
 
 // security1.cpp
 // Make me pass the test! Go to the folder hint if you want a hint :)
@@ -25,10 +26,20 @@ public:
     std::string get_song_name(int index) const{
         return song_ar[index].name_;
     }
+    const char * get_song_name_c_str(int index) const{
+        return song_ar[index].name_.c_str();
+    }
 };
 
 const char * convert_to_C_style_string(MediaPlayer & p, int index){
-    return p.get_song_name(index).c_str();
+    const size_t len = strlen(p.get_song_name(index).c_str());
+    char* tmp_filename = new char[len + 1];
+    strncpy(tmp_filename, p.get_song_name(index).c_str(), len);
+    tmp_filename[len] = '\0'; // I'm paranoid, maybe someone has changed something in _filename :-)
+ 
+    
+    //return p.get_song_name_c_str(index);
+    return tmp_filename;
 }
 
 #include <catch2/catch.hpp>
@@ -39,5 +50,5 @@ TEST_CASE("test_security1_0") {
     p.set_song("When the circus comes to town", 1);
     REQUIRE(p.get_song_name(0) == "Old MacDonald had a farm");
     const char * second_song = convert_to_C_style_string(p, 0);
-    REQUIRE(second_song == "Old MacDonald had a farm");
+    REQUIRE(std::string(second_song) == "Old MacDonald had a farm");
 }
